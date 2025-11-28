@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMundo - Seu Cinema Online</title>
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body> 
+    <a id="inicio"></a>
+
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+
+    <div class="hero-slider">
+        <a href="promocoes.html" class="active">
+            <img src="img/promo1ex.jpg" alt="Promoção 1">
+        </a>
+        <a href="promocoes.html">
+            <img src="img/promo2ex.jpg" alt="Promoção 2">
+        </a>
+    </div>
+
+    <header>
+        <a href="principal.html" class="tiulo" style="text-decoration: none; color: white;">CineMundo</a>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#filmes-em-cartaz">Filmes</a></li>
+                <li><a href="#contato-localizacao">Contato</a></li> 
+                <li><a href="login.html" class="btn-login">Login</a></li>
+                
+                <li onclick="window.location.href='carrinho.html'" style="cursor: pointer; position: relative; margin-left: 15px;">
+                    <span style="font-size: 24px;">🛒</span>
+                    <span id="contagem-carrinho" style="
+                        background: red; 
+                        color: white; 
+                        border-radius: 50%; 
+                        padding: 2px 6px; 
+                        font-size: 11px; 
+                        position: absolute; 
+                        top: -5px; 
+                        right: -10px;
+                        font-weight: bold;">
+                        0
+                    </span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+
+    <main>
+        <section id="filmes-em-cartaz">
+            <h2>Filmes em Cartaz</h2>
+            
+            <div class="carrossel-container">
+                <button id="prevBtn" class="carrossel-btn"><</button>
+                
+                <div class="carrossel-viewport">
+                    <div class="carrossel-track">
+                        <div class="carrossel-slide"><a href="autodacompadecida.html"><img src="./img/autodacompadecida.jpg" alt="Filme 1"></a></div>
+                        <div class="carrossel-slide"><a href="bailarina.html"><img src="./img/bailarinajohn.jpg" alt="Filme 2"></a></div>
+                        <div class="carrossel-slide"><a href="aindaestouaqui.html"><img src="./img/aindaestouaqui.jpg" alt="Filme 3"></a></div>
+                        <div class="carrossel-slide"><a href="capitao.html"><img src="./img/capitaoamerica.jpg" alt="Filme 4"></a></div>
+                        <div class="carrossel-slide"><a href="garotadinarmaquesa.html"><img src="./img/garotadinarmaquesa.jpg" alt="Filme 5"></a></div>
+                        <div class="carrossel-slide"><a href="segundotempo.html"><img src="./img/segundotempo.jpg" alt="Filme 6"></a></div>
+                        <div class="carrossel-slide"><a href="skarnado.html"><img src="./img/skarnado.jpg" alt="Filme 7"></a></div>
+                        <div class="carrossel-slide"><a href="thunderbolts.html"><img src="./img/thunderbolts.jpg" alt="Filme 8"></a></div>
+                    </div>
+                </div>
+
+                <button id="nextBtn" class="carrossel-btn">></button>
+            </div>
+        </section>
+
+        <br><br><br><br><br>
+
+        <section id="sobre" class="sobre-container">
+            <div class="sobre-conteudo">
+                <h2>Sobre o CineMundo</h2>
+                <p>
+                    Bem-vindo ao CineMundo, a materialização da minha paixão pelo entretenimento cinematográfico. Este projeto foi desenvolvido com dedicação como parte de um desafio acadêmico, transformando a teoria em uma experiência de usuário envolvente. Aqui, a magia do cinema ganha vida através da técnica e criatividade aplicadas. Explore e confira o resultado!
+            </div>
+
+            <div class="sobre-imagem">
+                <img src="img/selfiepanoramica.jpg" alt="Imagem Sobre Nós">
+            </div>
+        </section>
+
+        <section id="contato-localizacao" class="contato-container">
+            
+            <div class="coluna-localizacao">
+                <h3>📍 Onde Estamos</h3>
+                <p class="texto-local">Visite o nosso laboratório</p>
+                <p>R. Culto à Ciência, 177 - Campinas/SP</p>
+                
+                <div class="mapa-box">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.356924158633!2d-47.05898282383349!3d-22.89993683982625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c61de72c5355%3A0x4556e57b820992!2sCol%C3%A9gio%20T%C3%A9cnico%20de%20Campinas%20-%20Unicamp!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="linha-divisoria"></div>
+
+            <div class="coluna-contato">
+                <h3>📞 Contato</h3>
+                <ul class="lista-contato">
+                    <li><i class="fas fa-phone"></i> (19) 3521-9999</li>
+                    <li><i class="fab fa-whatsapp"></i> (19) 91234-5568</li>
+                    <li><i class="fas fa-envelope"></i> contato@cotuca.unicamp.br</li>
+                </ul>
+                <div class="redes-sociais">
+                    <h3>Siga-nos</h3>
+                    <p>Instagram | Facebook | Twitter</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer-real">
+        <p>© 2025 CineMundo - Projeto Acadêmico Cotuca. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

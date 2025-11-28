@@ -1,0 +1,29 @@
+{
+  "name": "cinemundo",
+  "version": "1.0.0",
+  "description": "CineMundo Project:\r Project Overview:\r  - CineMundo is a comprehensive web platform for selling movie tickets, developed as a school project. The application is designed to be intuitive and functional, allowing users to view showtimes, get detailed information about films, and securely purchase tickets.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusfrattini/CineMundo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusfrattini/CineMundo/issues"
+  },
+  "homepage": "https://github.com/matheusfrattini/CineMundo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mssql": "^12.1.1",
+    "nodemailer": "^7.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

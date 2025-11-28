@@ -1,0 +1,458 @@
+/* =========================================
+   1. RESET E CONFIGURAÇÃO BASE (Igual ao Login)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+    /* Evita barra de rolagem lateral pelas estrelas */
+}
+
+/* =========================================
+   2. ANIMAÇÃO DE FUNDO (Estrelas)
+   ========================================= */
+.stars {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    background: white;
+    box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white, 22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white, 38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white, 53vw 42vh 1px white, 58vw 15vh 2px white, 63vw 38vh 1px white, 68vw 28vh 2px white, 73vw 45vh 1px white, 78vw 32vh 2px white, 83vw 48vh 1px white, 88vw 20vh 2px white, 93vw 52vh 1px white, 98vw 35vh 2px white;
+    animation: twinkle 8s infinite linear;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    animation: shoot 3s infinite ease-in;
+    z-index: -1;
+}
+
+.shooting-star:nth-child(2) {
+    top: 20%;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.shooting-star:nth-child(3) {
+    top: 35%;
+    left: -100px;
+    animation-delay: 1s;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(25deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(120vw) translateY(50vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   3. CABEÇALHO (Header)
+   ========================================= */
+header {
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+header .tiulo {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ff6600;
+    /* Laranja da marca */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ff6600;
+}
+
+.btn-login {
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.btn-login:hover {
+    background: #fff;
+    color: #000 !important;
+}
+
+/* =========================================
+   4. CONTAINER PRINCIPAL DE COMPRA
+   ========================================= */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.compra-container {
+    background-color: #1a1a1a;
+    /* Mesmo fundo do container de login */
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    max-width: 700px;
+    /* Largura controlada */
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.compra-container h2 {
+    color: #ff6600;
+    margin-bottom: 5px;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtitulo {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   5. ESTILO DOS INPUTS E FORMULÁRIO
+   ========================================= */
+.form-compra {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* Alinha labels à esquerda */
+}
+
+.grupo-input {
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    display: block;
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/* Ícones dentro dos inputs */
+.input-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff6600;
+    /* Ícone laranja */
+    font-size: 14px;
+}
+
+/* Estilo geral de Inputs e Selects */
+.input-icon input,
+.input-icon select {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 12px 15px 12px 40px;
+    /* Espaço na esquerda para o ícone */
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    transition: border 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    appearance: none;
+    /* Remove seta padrão do select em alguns browsers */
+}
+
+.input-icon input:focus,
+.input-icon select:focus {
+    border-color: #ff6600;
+}
+
+.input-icon input::placeholder {
+    color: #999;
+}
+
+/* Campo somente leitura (Email) */
+.input-icon input[readonly] {
+    background-color: #252525;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* Linha Dupla (CPF e Email lado a lado) */
+.linha-dupla {
+    display: flex;
+    gap: 15px;
+}
+
+.linha-dupla .grupo-input {
+    flex: 1;
+}
+
+/* =========================================
+   6. SEÇÃO DE PAGAMENTO (CARDS)
+   ========================================= */
+.pagamento-section {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pagamento-section label {
+    font-size: 12px;
+    color: #ccc;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.opcoes-pagamento {
+    display: flex;
+    gap: 15px;
+}
+
+.opcao-card {
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Esconder o botão de rádio nativo */
+.opcao-card input {
+    display: none;
+}
+
+/* Design do cartão */
+.card-content {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.card-content i {
+    font-size: 24px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.card-content span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Estado Selecionado */
+.opcao-card input:checked+.card-content {
+    background-color: rgba(255, 102, 0, 0.1);
+    /* Fundo laranja transparente */
+    border-color: #ff6600;
+}
+
+.opcao-card input:checked+.card-content i,
+.opcao-card input:checked+.card-content span {
+    color: #ff6600;
+}
+
+/* =========================================
+   7. BOTÃO DE AÇÃO
+   ========================================= */
+.btn-finalizar {
+    background-color: #ff6600;
+    color: #fff;
+    font-size: 13px;
+    padding: 12px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-finalizar:hover {
+    background-color: #e65c00;
+    transform: scale(1.02);
+}
+
+.btn-finalizar:active {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.footer-real {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #666;
+    font-size: 12px;
+    border-top: 1px solid #222;
+    width: 100%;
+}
+
+/* =========================================
+   9. MODAL DRAMA (TEMPO ESGOTADO)
+   ========================================= */
+.modal-drama-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-drama-content {
+    background: #1a0505;
+    border: 2px solid #e50914;
+    /* Vermelho alerta */
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(229, 9, 20, 0.4);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-drama-content h2 {
+    color: #e50914;
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.modal-drama-content p {
+    color: #ddd;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.btn-drama {
+    background: #e50914;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-drama:hover {
+    background: #ff1f1f;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   10. RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 768px) {
+    .linha-dupla {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .opcoes-pagamento {
+        flex-direction: column;
+    }
+
+    .card-content {
+        flex-direction: row;
+        height: auto;
+        gap: 15px;
+    }
+
+    .compra-container {
+        padding: 30px 20px;
+    }
+}

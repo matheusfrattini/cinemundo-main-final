@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMundo - Carrinho</title>
+    <link rel="stylesheet" href="css/compra.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+
+    <header>
+        <a href="principal.html" class="tiulo">CineMundo</a>
+        <nav>
+            <ul>
+                <li><a href="principal.html">Início</a></li>
+                <li><a href="principal.html#filmes-em-cartaz">Filmes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="compra-container">
+            <h2>🛒 Seu Carrinho</h2>
+            <p class="subtitulo">Revise seus itens e finalize a compra.</p>
+
+            <div id="itens-carrinho">
+                <p style="color: #999;">Carregando itens...</p>
+            </div>
+
+            <div id="pagamento-section" style="display:none; margin-top: 30px;">
+                <div class="pagamento-section">
+                    <label>Forma de Pagamento:</label>
+                    <div class="opcoes-pagamento">
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="cartao" id="pag-cartao" checked>
+                            <div class="card-content">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cartão</span>
+                            </div>
+                        </label>
+
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="pix" id="pag-pix">
+                            <div class="card-content">
+                                <i class="fab fa-pix"></i> <span>PIX</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Formulário de Cartão (Visual apenas) -->
+                <div id="form-cartao" style="margin-top: 20px;">
+                    <div class="grupo-input">
+                        <label>Número do Cartão</label>
+                        <div class="input-icon">
+                            <i class="fas fa-credit-card"></i>
+                            <input type="text" placeholder="0000 0000 0000 0000">
+                        </div>
+                    </div>
+                    <div class="linha-dupla">
+                        <div class="grupo-input">
+                            <label>Validade</label>
+                            <div class="input-icon">
+                                <i class="fas fa-calendar"></i>
+                                <input type="text" placeholder="MM/AA">
+                            </div>
+                        </div>
+                        <div class="grupo-input">
+                            <label>CVV</label>
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-finalizar" onclick="finalizarCompra()" style="display:none;" id="btn-finalizar">Finalizar
+                Compra</button>
+        </div>
+    </main>
+
+    <footer class="footer-real">
+        <p>© 2025 CineMundo - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // 1. Verificação de Segurança (Login)
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuario'));
+
+        if (!usuarioLogado) {
+            alert("Você precisa estar logado para acessar o carrinho!");
+            window.location.href = "login.html";
+        } else {
+            // Mostra a secção de pagamento se estiver logado
+            document.getElementById('pagamento-section').style.display = 'block';
+            document.getElementById('btn-finalizar').style.display = 'block';
+            carregarItensDoCarrinho();
+        }
+
+        // Lógica de exibição do cartão
+        const radiosPagamento = document.querySelectorAll('input[name="pagamento"]');
+        const formCartao = document.getElementById('form-cartao');
+
+        radiosPagamento.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'cartao') {
+                    formCartao.style.display = 'block';
+                } else {
+                    formCartao.style.display = 'none';
+                }
+            });
+        });
+
+        // Simulação de carregamento de itens
+        function carregarItensDoCarrinho() {
+            const filmeSelecionado = localStorage.getItem('filmeSelecionado') || "Filme Exemplo";
+            const horarioSelecionado = localStorage.getItem('horarioSelecionado') || "20:00";
+
+            document.getElementById('itens-carrinho').innerHTML = `
+                <div class="grupo-input">
+                    <label>Filme</label>
+                    <div class="input-icon">
+                        <i class="fas fa-film"></i>
+                        <input type="text" value="${filmeSelecionado}" readonly style="background: #222; color: #ff6600; font-weight: bold;">
+                    </div>
+                </div>
+                
+                <div class="linha-dupla">
+                     <div class="grupo-input">
+                        <label>Tipo de Ingresso</label>
+                        <div class="input-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                            <select id="tipo-ingresso-carrinho" onchange="atualizarPreco()">
+                                <option value="inteira">Inteira (R$ 10,00)</option>
+                                <option value="meia">Meia (R$ 7,00)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grupo-input">
+                        <label>Valor Total</label>
+                        <div class="input-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="text" id="valor-total-display" value="R$ 10,00" readonly style="color: #0f0;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label>Cliente</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" value="${usuarioLogado.nome}" readonly style="background: #222; color: #777;">
+                    </div>
+                </div>
+            `;
+        }
+
+        function atualizarPreco() {
+            const tipo = document.getElementById('tipo-ingresso-carrinho').value;
+            const valor = tipo === 'inteira' ? "R$ 10,00" : "R$ 7,00";
+            document.getElementById('valor-total-display').value = valor;
+        }
+
+        // Função para chamar a API
+        function finalizarCompra() {
+            const tipoIngresso = document.getElementById('tipo-ingresso-carrinho').value;
+            const valorFinal = tipoIngresso === 'inteira' ? 10.00 : 7.00;
+            const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+
+            // Payload corrigido para o backend
+            const dadosCompra = {
+                cliente_id: usuarioLogado.id,
+                nome: usuarioLogado.nome,
+                email: usuarioLogado.email,
+                cpf: usuarioLogado.cpf,
+                total: valorFinal, // Backend espera 'total'
+                metodo_pagamento: metodoPagamento,
+                itens: [
+                    {
+                        descricao: "Ingresso: " + (localStorage.getItem('filmeSelecionado') || "Filme Padrão") + " (" + tipoIngresso + ")",
+                        quantidade: 1,
+                        valor: valorFinal,
+                        tipo: 'INGRESSO'
+                    }
+                ]
+            };
+
+            fetch('http://localhost:3000/api/comprar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dadosCompra)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (metodoPagamento === 'pix' && data.pixCode) {
+                        alert("Código PIX Gerado:\n" + data.pixCode);
+                        navigator.clipboard.writeText(data.pixCode);
+                    } else {
+                        alert(data.message || "Compra realizada com sucesso!");
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert("Erro ao processar compra.");
+                });
+        }
+    </script>
+</body>
+
+</html>

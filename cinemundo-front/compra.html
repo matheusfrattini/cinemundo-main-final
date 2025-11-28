@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMundo - Finalizar Compra</title>
+    <link rel="stylesheet" href="css/compra.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+
+    <div id="modal-drama" class="modal-drama-overlay" style="display: none;">
+        <div class="modal-drama-content">
+            <i class="fas fa-skull-crossbones" style="font-size: 50px; color: #e50914; margin-bottom: 20px;"></i>
+            <h2>TEMPO ESGOTADO!</h2>
+            <p>⚠️ Você demorou mais de 15 minutos.</p>
+            <p>O sistema cedeu os seus ingressos para outra pessoa.</p>
+            <button onclick="window.location.href='principal.html'" class="btn-drama">Voltar ao Início</button>
+        </div>
+    </div>
+
+    <header>
+        <a href="principal.html" class="tiulo">CineMundo</a>
+        <nav>
+            <ul>
+                <li><a href="principal.html">Início</a></li>
+                <li><a href="principal.html#filmes-em-cartaz">Filmes</a></li>
+                <li><a href="login.html" id="btn-nav-login" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="compra-container">
+            <h2>🎟️ Garantir Ingresso</h2>
+            <p class="subtitulo">Confirme os dados para gerar seu pagamento.</p>
+
+            <form class="form-compra" id="form-finalizar">
+
+                <div class="grupo-input">
+                    <label for="filme-select">Filme Selecionado:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-film"></i>
+                        <select id="filme-select" required>
+                            <option value="" disabled selected>Selecione um filme...</option>
+                            <option value="O Auto da Compadecida 2">O Auto da Compadecida 2</option>
+                            <option value="Bailarina - John Wick">Bailarina - John Wick</option>
+                            <option value="Ainda Estou Aqui">Ainda Estou Aqui</option>
+                            <option value="Capitão América: Admirável Mundo Novo">Capitão América: Admirável Mundo Novo
+                            </option>
+                            <option value="A Garota Dinamarquesa">A Garota Dinamarquesa</option>
+                            <option value="Segundo Tempo">Segundo Tempo</option>
+                            <option value="Sharknado">Sharknado</option>
+                            <option value="O Menino e a Garça">O Menino e a Garça</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- NOVA SEÇÃO: DATA E HORÁRIO -->
+                <div class="linha-dupla">
+                    <div class="grupo-input">
+                        <label for="data-sessao">Data da Sessão:</label>
+                        <div class="input-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                            <select id="data-sessao" required>
+                                <option value="" disabled selected>Escolha a data...</option>
+                                <option value="29/11">29/11 (Sexta)</option>
+                                <option value="30/11">30/11 (Sábado)</option>
+                                <option value="01/12">01/12 (Domingo)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="horario-sessao">Horário:</label>
+                        <div class="input-icon">
+                            <i class="fas fa-clock"></i>
+                            <select id="horario-sessao" required>
+                                <option value="" disabled selected>Escolha o horário...</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="21:00">21:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="tipo-ingresso">Tipo de Ingresso:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                        <select id="tipo-ingresso" required>
+                            <option value="inteira">Inteira (R$ 10,00)</option>
+                            <option value="meia">Meia (R$ 7,00)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="nome">Nome Completo:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="nome" placeholder="O seu nome" required>
+                    </div>
+                </div>
+
+                <div class="linha-dupla">
+                    <div class="grupo-input">
+                        <label for="cpf">CPF (Para Nota):</label>
+                        <div class="input-icon">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="cpf" placeholder="000.000.000-00" required>
+                        </div>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="email">Email (Confirmação):</label>
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" readonly required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagamento-section">
+                    <label>Forma de Pagamento:</label>
+                    <div class="opcoes-pagamento">
+
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="cartao" required>
+                            <div class="card-content">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cartão</span>
+                            </div>
+                        </label>
+
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="pix">
+                            <div class="card-content">
+                                <i class="fab fa-pix"></i> <span>PIX</span>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-finalizar">Confirmar Compra</button>
+
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer-real">
+        <p>© 2025 CineMundo - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // 1. VERIFICAÇÃO DE SEGURANÇA E PREENCHIMENTO AUTOMÁTICO
+        document.addEventListener("DOMContentLoaded", () => {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+            const filmeSelecionado = localStorage.getItem('filmeSelecionado');
+
+            // Se não tiver login, manda embora
+            if (!usuario) {
+                alert("Você precisa fazer login para comprar!");
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Preencher dados do usuário automaticamente
+            document.getElementById('nome').value = usuario.nome || "";
+            document.getElementById('email').value = usuario.email || "";
+            document.getElementById('btn-nav-login').innerText = "Olá, " + usuario.nome.split(' ')[0];
+
+            // Tentar selecionar o filme automaticamente se veio do carrinho
+            if (filmeSelecionado) {
+                const select = document.getElementById('filme-select');
+                // Procura a opção que tem o texto igual ao salvo
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].text === filmeSelecionado || select.options[i].value === filmeSelecionado) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        });
+
+        // 2. ENVIO DO FORMULÁRIO (INTEGRAÇÃO API)
+        document.getElementById('form-finalizar').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+            const filme = document.getElementById('filme-select').value;
+            const dataSessao = document.getElementById('data-sessao').value;
+            const horarioSessao = document.getElementById('horario-sessao').value;
+            const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+            const cpf = document.getElementById('cpf').value;
+
+            const tipoIngresso = document.getElementById('tipo-ingresso').value;
+            const valorIngresso = tipoIngresso === 'inteira' ? 10.00 : 7.00;
+
+            // Payload corrigido para o backend
+            const dadosCompra = {
+                cliente_id: usuario.id, // ID do cliente
+                nome: usuario.nome,
+                email: usuario.email,
+                cpf: cpf,
+                total: valorIngresso, // Backend espera 'total'
+                metodo_pagamento: metodoPagamento, // Backend espera 'metodo_pagamento'
+                itens: [
+                    {
+                        descricao: `Ingresso: ${filme} (${tipoIngresso}) - ${dataSessao} às ${horarioSessao}`,
+                        quantidade: 1,
+                        valor: valorIngresso,
+                        tipo: 'INGRESSO'
+                    }
+                ]
+            };
+
+            try {
+                // Chama a API criada
+                const response = await fetch('http://localhost:3000/api/comprar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dadosCompra)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (metodoPagamento === 'pix' && data.pixCode) {
+                        alert("Código PIX Gerado (Copiado para área de transferência):\n\n" + data.pixCode);
+                        navigator.clipboard.writeText(data.pixCode); // Copia automático
+                    } else {
+                        alert("Compra realizada com sucesso! Verifique seu email.");
+                    }
+                    // Redirecionar ou limpar?
+                } else {
+                    alert("Erro na compra: " + (data.error || data.message));
+                }
+
+                // 3. LÓGICA DO DRAMA (15 MINUTOS)
+                iniciarContagemDrama();
+
+            } catch (error) {
+                console.error(error);
+                alert("Erro ao conectar com o servidor.");
+            }
+        });
+
+        // Função Dramática
+        function iniciarContagemDrama() {
+            console.log("Contagem regressiva de 15 minutos iniciada...");
+            setTimeout(() => {
+                document.getElementById('modal-drama').style.display = 'flex';
+            }, 15 * 60 * 1000); // 15 minutos reais
+        }
+    </script>
+</body>
+
+</html>
